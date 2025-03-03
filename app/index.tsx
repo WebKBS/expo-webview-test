@@ -15,7 +15,19 @@ export default function Index() {
     // </>
     <SafeAreaView style={styles.container}>
       <StatusBar style="dark" />
-      <WebView source={{ uri: "" }} style={styles.webview} />
+      <WebView source={{ uri: "" }} style={styles.webview}
+
+               javaScriptEnabled
+               domStorageEnabled
+               sharedCookiesEnabled
+               thirdPartyCookiesEnabled
+               incognito={false} // false로 설정하여 세션 유지
+               userAgent="Mozilla/5.0 (Linux; Android 10; Mobile; rv:90.0) Gecko/90.0 Firefox/90.0"
+               setSupportMultipleWindows
+               onNavigationStateChange={(navState) => {
+                 console.log("Current URL:", navState.url);
+               }}
+      />
     </SafeAreaView>
   );
 }
